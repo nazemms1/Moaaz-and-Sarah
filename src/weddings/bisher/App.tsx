@@ -8,7 +8,7 @@ import { VenueSection } from "./components/VenueSection";
 import { BackToTop } from "../../shared/BackToTop";
 import { FloatingHearts } from "../../shared/FloatingHearts";
 import { SectionDivider } from "../../shared/SectionDivider";
-import { EngagementTimeline } from "../joudi/components/EngagementTimeline";
+import { EngagementTimeline } from "./components/EngagementTimeline";
 
 const SCROLL_SPEED = 1.8;
 
