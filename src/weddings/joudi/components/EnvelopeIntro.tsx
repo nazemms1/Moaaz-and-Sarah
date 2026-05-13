@@ -8,14 +8,29 @@ interface EnvelopeIntroProps {
 
 export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
   const [stage, setStage] = useState<"idle" | "playing">("idle");
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [debugInfo, setDebugInfo] = useState<string[]>([]);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const addDebug = (msg: string) => {
+    setDebugInfo(prev => [...prev.slice(-6), msg]);
+  };
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
-    video.addEventListener("ended", onOpen);
-    return () => video.removeEventListener("ended", onOpen);
+    if (!video) { addDebug("❌ video ref null"); return; }
+
+    addDebug(`readyState: ${video.readyState}`);
+
+    video.addEventListener("loadstart",    () => addDebug("📥 loadstart"));
+    video.addEventListener("loadeddata",   () => addDebug("✅ loadeddata"));
+    video.addEventListener("canplay",      () => addDebug("▶️ canplay"));
+    video.addEventListener("canplaythrough",() => addDebug("✅ canplaythrough"));
+    video.addEventListener("error",        () => {
+      const e = video.error;
+      addDebug(`❌ error: code=${e?.code} msg=${e?.message}`);
+    });
+    video.addEventListener("stalled",      () => addDebug("⚠️ stalled"));
+    video.addEventListener("ended",        onOpen);
   }, [onOpen]);
 
   async function handleClick() {
@@ -23,16 +38,17 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
     const video = videoRef.current;
     if (!video) return;
 
+    addDebug(`tap — readyState: ${video.readyState}`);
     setStage("playing");
-    setErrorMsg(null);
 
     try {
       video.muted = true;
       video.currentTime = 0;
       await video.play();
+      addDebug("✅ play() ok");
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
-      setErrorMsg(msg);
+      addDebug(`❌ play() failed: ${msg}`);
       setStage("idle");
     }
   }
@@ -72,8 +88,7 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
           >
             <motion.div
               style={{
-                width: 48,
-                height: 1,
+                width: 48, height: 1,
                 background: `linear-gradient(to right, transparent, ${theme.color.gold}, transparent)`,
                 marginBottom: 20,
               }}
@@ -99,33 +114,32 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 
             <motion.div
               style={{
-                width: 48,
-                height: 1,
+                width: 48, height: 1,
                 background: `linear-gradient(to right, transparent, ${theme.color.gold}, transparent)`,
                 marginTop: 20,
               }}
               animate={{ scaleX: [0.6, 1, 0.6], opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
             />
-
-            {/* Error message for debugging */}
-            {errorMsg && (
-              <p style={{
-                color: "#ff6b6b",
-                fontSize: "0.75rem",
-                marginTop: 12,
-                padding: "4px 12px",
-                background: "rgba(0,0,0,0.6)",
-                borderRadius: 4,
-                maxWidth: "80vw",
-                textAlign: "center",
-              }}>
-                {errorMsg}
-              </p>
-            )}
           </motion.div>
         </>
       )}
+
+      {/* Debug panel — always visible */}
+      <div style={{
+        position: "fixed", top: 12, left: 12, right: 12,
+        background: "rgba(0,0,0,0.85)",
+        color: "#0f0",
+        fontFamily: "monospace",
+        fontSize: "12px",
+        padding: "8px 12px",
+        borderRadius: 6,
+        zIndex: 9999,
+        pointerEvents: "none",
+        lineHeight: 1.6,
+      }}>
+        {debugInfo.length === 0 ? "waiting..." : debugInfo.map((l, i) => <div key={i}>{l}</div>)}
+      </div>
     </div>
   );
 }
