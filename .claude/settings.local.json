@@ -4,7 +4,9 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git push *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(ffmpeg -version)",
+      "Bash(ffmpeg -i intro.mp4 -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p -movflags +faststart -an intro_fixed.mp4 -y)"
     ]
   }
 }
