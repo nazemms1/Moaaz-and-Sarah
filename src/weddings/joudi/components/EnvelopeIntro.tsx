@@ -8,29 +8,24 @@ interface EnvelopeIntroProps {
 
 export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
   const [stage, setStage] = useState<"idle" | "playing">("idle");
-  const [debugInfo, setDebugInfo] = useState<string[]>([]);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const addDebug = (msg: string) => {
-    setDebugInfo(prev => [...prev.slice(-6), msg]);
-  };
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) { addDebug("❌ video ref null"); return; }
+    if (!video) return;
 
-    addDebug(`readyState: ${video.readyState}`);
+    const onEnded = () => onOpen();
+    const onStalled = () => {
+      // iOS Safari stalls sometimes — reload and retry
+      video.load();
+    };
 
-    video.addEventListener("loadstart",    () => addDebug("📥 loadstart"));
-    video.addEventListener("loadeddata",   () => addDebug("✅ loadeddata"));
-    video.addEventListener("canplay",      () => addDebug("▶️ canplay"));
-    video.addEventListener("canplaythrough",() => addDebug("✅ canplaythrough"));
-    video.addEventListener("error",        () => {
-      const e = video.error;
-      addDebug(`❌ error: code=${e?.code} msg=${e?.message}`);
-    });
-    video.addEventListener("stalled",      () => addDebug("⚠️ stalled"));
-    video.addEventListener("ended",        onOpen);
+    video.addEventListener("ended", onEnded);
+    video.addEventListener("stalled", onStalled);
+    return () => {
+      video.removeEventListener("ended", onEnded);
+      video.removeEventListener("stalled", onStalled);
+    };
   }, [onOpen]);
 
   async function handleClick() {
@@ -38,18 +33,15 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
     const video = videoRef.current;
     if (!video) return;
 
-    addDebug(`tap — readyState: ${video.readyState}`);
     setStage("playing");
 
     try {
       video.muted = true;
       video.currentTime = 0;
       await video.play();
-      addDebug("✅ play() ok");
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : String(err);
-      addDebug(`❌ play() failed: ${msg}`);
-      setStage("idle");
+    } catch {
+      // If video fails on iOS, open invitation directly
+      onOpen();
     }
   }
 
@@ -61,12 +53,13 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
     >
       <video
         ref={videoRef}
-        src="/Moaaz-Habbab-Wedding/intro.mp4"
         playsInline
         muted
         preload="auto"
         className="w-full h-full object-cover"
-      />
+      >
+        <source src="/Moaaz-Habbab-Wedding/intro.mp4" type="video/mp4" />
+      </video>
 
       {stage === "idle" && (
         <>
@@ -124,22 +117,6 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
           </motion.div>
         </>
       )}
-
-      {/* Debug panel — always visible */}
-      <div style={{
-        position: "fixed", top: 12, left: 12, right: 12,
-        background: "rgba(0,0,0,0.85)",
-        color: "#0f0",
-        fontFamily: "monospace",
-        fontSize: "12px",
-        padding: "8px 12px",
-        borderRadius: 6,
-        zIndex: 9999,
-        pointerEvents: "none",
-        lineHeight: 1.6,
-      }}>
-        {debugInfo.length === 0 ? "waiting..." : debugInfo.map((l, i) => <div key={i}>{l}</div>)}
-      </div>
     </div>
   );
 }
