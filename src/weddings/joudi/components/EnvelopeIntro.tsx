@@ -56,6 +56,7 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
         playsInline
         muted
         preload="auto"
+        poster="/Moaaz-Habbab-Wedding/intro-poster.jpg"
         className="w-full h-full object-cover"
       >
         <source src="/Moaaz-Habbab-Wedding/intro.mp4" type="video/mp4" />
