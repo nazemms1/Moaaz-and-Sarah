@@ -22,7 +22,9 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
     const video = videoRef.current;
     if (!video) return;
 
+    // Try muted autoplay first (required by iOS/Chrome autoplay policy)
     const tryAutoPlay = () => {
+      video.muted = true;
       video.play()
         .then(() => setStage("playing"))
         .catch(() => setStage("idle"));
@@ -38,8 +40,17 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
   function handleClick() {
     const video = videoRef.current;
     if (!video) return;
+
+    if (stage === "playing") return;
+
+    // User gesture — unmute and play with sound
+    video.muted = false;
+    video.play().catch(() => {
+      // If unmuted play fails, try muted
+      video.muted = true;
+      video.play().catch(() => onOpen());
+    });
     setStage("playing");
-    video.play().catch(() => onOpen());
   }
 
   function handleVideoEnded() {
@@ -56,6 +67,7 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
         ref={videoRef}
         src="/Moaaz-Habbab-Wedding/intro.mp4"
         playsInline
+        muted
         preload="auto"
         onEnded={handleVideoEnded}
         className="w-full h-full object-cover"
