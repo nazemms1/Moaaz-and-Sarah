@@ -49,7 +49,6 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
         playsInline
         muted
         preload="auto"
-        poster="/Moaaz-Habbab-Wedding/wedding.jpeg"
         className="w-full h-full object-cover"
       />
 
