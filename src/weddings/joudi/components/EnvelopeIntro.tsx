@@ -10,6 +10,13 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
   const [stage, setStage] = useState<"idle" | "playing">("idle");
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.addEventListener("ended", onOpen);
+    return () => video.removeEventListener("ended", onOpen);
+  }, [onOpen]);
+
   function handleClick() {
     if (stage !== "idle") return;
     const video = videoRef.current;
@@ -19,19 +26,13 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
     video.play().catch(() => onOpen());
   }
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.addEventListener("ended", onOpen);
-    return () => video.removeEventListener("ended", onOpen);
-  }, [onOpen]);
-
   return (
     <div
       className="fixed inset-0 z-50 bg-black flex items-center justify-center"
       onClick={handleClick}
       style={{ cursor: stage === "idle" ? "pointer" : "default" }}
     >
+      {/* Video always visible, paused at first frame until tap */}
       <video
         ref={videoRef}
         src="/Moaaz-Habbab-Wedding/intro.mp4"
@@ -39,65 +40,87 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
         muted
         preload="auto"
         className="w-full h-full object-cover"
-        style={{ display: stage === "playing" ? "block" : "none" }}
       />
 
+      {/* Overlay tap prompt — only when idle */}
       {stage === "idle" && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
-          <motion.div
-            animate={{ opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        <>
+          {/* Subtle dark gradient at bottom */}
+          <div
+            className="absolute inset-x-0 bottom-0"
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "16px",
+              height: "45%",
+              background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)",
+              pointerEvents: "none",
             }}
+          />
+
+          {/* Tap prompt */}
+          <motion.div
+            className="absolute bottom-0 inset-x-0 flex flex-col items-center"
+            style={{ paddingBottom: "clamp(32px, 8vh, 64px)" }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            {/* Decorative ring */}
-            <div
+            {/* Thin gold line */}
+            <motion.div
               style={{
-                width: 90,
-                height: 90,
-                borderRadius: "50%",
-                border: `2px solid ${theme.color.gold}`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                width: 48,
+                height: 1,
+                background: `linear-gradient(to right, transparent, ${theme.color.gold}, transparent)`,
+                marginBottom: 20,
+              }}
+              animate={{ scaleX: [0.6, 1, 0.6], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Arabic */}
+            <motion.p
+              style={{
+                color: "#fff",
+                fontFamily: theme.font.display,
+                fontSize: "clamp(1.1rem, 4vw, 1.5rem)",
+                fontWeight: 500,
+                letterSpacing: "0.04em",
+                margin: 0,
+                textShadow: "0 2px 12px rgba(0,0,0,0.6)",
+              }}
+              animate={{ opacity: [0.8, 1, 0.8] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              اضغط لفتح الدعوة
+            </motion.p>
+
+            {/* English */}
+            <p
+              style={{
+                color: theme.color.gold,
+                fontFamily: theme.font.body,
+                fontSize: "clamp(0.65rem, 2vw, 0.8rem)",
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                margin: "8px 0 0",
+                opacity: 0.85,
+                textShadow: "0 1px 8px rgba(0,0,0,0.5)",
               }}
             >
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={theme.color.gold} strokeWidth="1.5">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-            </div>
-
-            {/* Arabic text */}
-            <p style={{
-              color: theme.color.gold,
-              fontFamily: theme.font.display,
-              fontSize: "clamp(1rem, 4vw, 1.4rem)",
-              letterSpacing: "0.05em",
-              textAlign: "center",
-              margin: 0,
-            }}>
-              اضغط لفتح الدعوة
-            </p>
-
-            {/* English text */}
-            <p style={{
-              color: theme.color.goldLight,
-              fontFamily: theme.font.body,
-              fontSize: "clamp(0.75rem, 2.5vw, 0.95rem)",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              textAlign: "center",
-              margin: 0,
-              opacity: 0.7,
-            }}>
               Tap to open invitation
             </p>
+
+            {/* Thin gold line */}
+            <motion.div
+              style={{
+                width: 48,
+                height: 1,
+                background: `linear-gradient(to right, transparent, ${theme.color.gold}, transparent)`,
+                marginTop: 20,
+              }}
+              animate={{ scaleX: [0.6, 1, 0.6], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+            />
           </motion.div>
-        </div>
+        </>
       )}
     </div>
   );
