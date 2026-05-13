@@ -180,7 +180,7 @@ export function CoupleSection() {
 
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background photo */}
+      {/* Background photo — no backgroundAttachment:fixed (breaks on iOS Safari) */}
       <div
         aria-hidden="true"
         className="absolute inset-0"
@@ -188,7 +188,6 @@ export function CoupleSection() {
           backgroundImage: `url(${config.sectionImages.couple})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
         }}
       />
 

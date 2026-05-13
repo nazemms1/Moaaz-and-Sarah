@@ -30,9 +30,9 @@ export const config: SiteConfig = {
     name: "قاعة الياسمين — البهية",
     address: "دمشق، سوريا",
     googleMapsEmbedUrl:
-      "https://maps.google.com/maps?q=33.49735850955281,36.249302772151715&z=16&output=embed",
+      "https://maps.google.com/maps?q=33.49901649413462,36.28216936041571&z=16&output=embed",
     googleMapsLink:
-      "https://www.google.com/maps?q=33.49735850955281,36.249302772151715",
+      "https://www.google.com/maps?q=33.49901649413462,36.28216936041571",
   },
   closing: {
     message:
