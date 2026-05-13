@@ -8,6 +8,7 @@ interface EnvelopeIntroProps {
 
 export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
   const [stage, setStage] = useState<"idle" | "playing">("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -17,13 +18,23 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
     return () => video.removeEventListener("ended", onOpen);
   }, [onOpen]);
 
-  function handleClick() {
+  async function handleClick() {
     if (stage !== "idle") return;
     const video = videoRef.current;
     if (!video) return;
+
     setStage("playing");
-    video.muted = true;
-    video.play().catch(() => onOpen());
+    setErrorMsg(null);
+
+    try {
+      video.muted = true;
+      video.currentTime = 0;
+      await video.play();
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setErrorMsg(msg);
+      setStage("idle");
+    }
   }
 
   return (
@@ -32,20 +43,18 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
       onClick={handleClick}
       style={{ cursor: stage === "idle" ? "pointer" : "default" }}
     >
-      {/* Video always visible, paused at first frame until tap */}
       <video
         ref={videoRef}
         src="/Moaaz-Habbab-Wedding/intro.mp4"
         playsInline
         muted
         preload="auto"
+        poster="/Moaaz-Habbab-Wedding/wedding.jpeg"
         className="w-full h-full object-cover"
       />
 
-      {/* Overlay tap prompt — only when idle */}
       {stage === "idle" && (
         <>
-          {/* Subtle dark gradient at bottom */}
           <div
             className="absolute inset-x-0 bottom-0"
             style={{
@@ -55,7 +64,6 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
             }}
           />
 
-          {/* Tap prompt */}
           <motion.div
             className="absolute bottom-0 inset-x-0 flex flex-col items-center"
             style={{ paddingBottom: "clamp(32px, 8vh, 64px)" }}
@@ -63,7 +71,6 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            {/* Thin gold line */}
             <motion.div
               style={{
                 width: 48,
@@ -75,7 +82,6 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            {/* Arabic */}
             <motion.p
               style={{
                 color: "#fff",
@@ -92,7 +98,6 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
               اضغط لفتح الدعوة
             </motion.p>
 
-            {/* Thin gold line */}
             <motion.div
               style={{
                 width: 48,
@@ -103,6 +108,22 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
               animate={{ scaleX: [0.6, 1, 0.6], opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
             />
+
+            {/* Error message for debugging */}
+            {errorMsg && (
+              <p style={{
+                color: "#ff6b6b",
+                fontSize: "0.75rem",
+                marginTop: 12,
+                padding: "4px 12px",
+                background: "rgba(0,0,0,0.6)",
+                borderRadius: 4,
+                maxWidth: "80vw",
+                textAlign: "center",
+              }}>
+                {errorMsg}
+              </p>
+            )}
           </motion.div>
         </>
       )}
