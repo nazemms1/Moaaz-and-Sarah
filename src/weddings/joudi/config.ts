@@ -2,31 +2,33 @@ import type { SiteConfig } from "../../types/config";
 
 export const config: SiteConfig = {
   meta: {
-    title: "Judy & Bisher | October 15, 2026",
-    language: "en",
+    title: "Dr. Muhammad Mu'adh & Dr. Sarah | June 2, 2026",
+    language: "ar",
   },
   couple: {
-    partner1: "Judy",
-    partner2: "Bisher",
-    tagline: "We're getting married!",
+    partner1: "محمد معاذ",
+    partner2: "سارة",
+    partner1Father: "ابن الأستاذ صبحي حباب",
+    partner2Father: "ابنة الأستاذ عماد ريحاوي",
+    tagline: "نحتفل بزفافنا",
   },
 
   message: {
     paragraphs: [
-      "With hearts overflowing with joy and gratitude, we invite you to be part of our most cherished celebration.",
-      "Your presence, laughter, and love have shaped who we are, and there is no one else we would rather have beside us as we begin this beautiful journey together.",
-      "Please join us as we exchange our vows and celebrate the love that has brought us to this magical moment.",
+      "بقلوب مفعمة بالبهجة والامتنان، ندعوكم لتكونوا جزءاً من أجمل احتفالاتنا.",
+      "حضوركم وضحكاتكم ومحبتكم شكّلت من نحن، ولا أحد سوى أنتم يستحق أن يكون بجانبنا ونحن نبدأ هذه الرحلة الجميلة معاً.",
+      "انضموا إلينا لتبادل الأيمان والاحتفال بالحب الذي قادنا إلى هذه اللحظة السحرية.",
     ],
-    signature: "With all our love, Judy & Bisher",
+    signature: "بكل محبتنا، محمد معاذ وسارة",
   },
   event: {
-    weddingDate: "2026-05-03T21:00:00",
-    displayDate: "Sunday, May 3st, 2026",
-    displayTime: "7:00 PM",
+    weddingDate: "2026-06-02T20:00:00",
+    displayDate: "الثلاثاء، ٢ يونيو ٢٠٢٦",
+    displayTime: "٨:٠٠ مساءً",
   },
   venue: {
-    name: "The Grand Rose Garden",
-    address: "245 Blossom Lane, Beverly Hills, CA 90210",
+    name: "قاعة الياسمين — البهية",
+    address: "دمشق، سوريا",
     googleMapsEmbedUrl:
       "https://maps.google.com/maps?q=33.49735850955281,36.249302772151715&z=16&output=embed",
     googleMapsLink:
@@ -34,9 +36,9 @@ export const config: SiteConfig = {
   },
   closing: {
     message:
-      "We can't wait to celebrate with you and create memories that will last a lifetime.",
+      "نتطلع بشوق لمشاركتكم هذه اللحظة الجميلة وصنع ذكريات تدوم مدى الحياة.",
     rsvpLink: "https://forms.google.com",
-    hashtag: "#JoudiAndBisher2026",
+    hashtag: "#محمد_معاذ_وسارة_2026",
   },
   gallery: {
     images: [
@@ -64,26 +66,26 @@ export const config: SiteConfig = {
       "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
   },
   sectionImages: {
-    envelope: "/wedding/envelope.jpeg",
-    couple: "/wedding/wedding-ring.jpeg",
-    message: "/wedding/message.jpeg",
+    envelope: "/wedding/wedding.jpeg",
+    couple: "/wedding/wedding.jpeg",
+    message: "/wedding/message1.jpeg",
     date: "/wedding/date.jpeg",
     venue: "/wedding/venue.jpeg",
     guestbook: "/wedding/guestbook.jpeg",
-    engagment: "/wedding/B-J.jpeg",
+    engagment: "/wedding/engagement.jpeg",
+    backgroundImage: "/wedding/backgroundImage.jpg",
   },
 
   guestbook: {
     seedMessages: [
       {
-        name: "Sarah & Mark",
+        name: "سارة ومحمد",
         message:
-          "Wishing you both a lifetime of happiness and endless adventures together. So thrilled to celebrate you!",
+          "نتمنى لكما حياة مليئة بالسعادة والمحبة والمغامرات الجميلة معاً. نحن في غاية السعادة للاحتفال معكما!",
       },
       {
-        name: "The Johnson Family",
-        message:
-          "May your love grow stronger with every passing year. Congratulations to the most beautiful couple!",
+        name: "عائلة الريحاوي",
+        message: "ليزداد حبكما قوةً مع كل يوم يمر. ألف مبروك لأجمل عروسين!",
       },
     ],
   },

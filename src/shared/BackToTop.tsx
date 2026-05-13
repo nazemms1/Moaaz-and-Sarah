@@ -17,10 +17,12 @@ export function BackToTop() {
       {visible && (
         <motion.button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-7 right-7 z-40 w-11 h-11 flex items-center justify-center text-white cursor-pointer shadow-lg"
+          className="fixed bottom-7 right-7 z-40 w-11 h-11 flex items-center justify-center cursor-pointer shadow-lg"
           style={{
-            background:
-              "linear-gradient(160deg, rgba(5,14,31,0.88) 0%, rgba(10,26,58,0.82) 30%, rgba(13,30,69,0.80) 60%, rgba(8,21,48,0.88) 100%)",
+            background: "linear-gradient(135deg, #C9A84C, #A8883A)",
+            color: "#FFFDF8",
+            border: "1px solid rgba(232,204,128,0.4)",
+            boxShadow: "0 4px 20px rgba(201,168,76,0.35)",
           }}
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -28,7 +30,7 @@ export function BackToTop() {
           transition={{ duration: 0.25 }}
           whileHover={{
             scale: 1.15,
-            boxShadow: "0 6px 24px rgba(232,88,122,0.4)",
+            boxShadow: "0 6px 28px rgba(201,168,76,0.55)",
           }}
           whileTap={{ scale: 0.9 }}
           aria-label="Back to top"

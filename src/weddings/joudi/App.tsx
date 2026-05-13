@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EnvelopeIntro } from "./components/EnvelopeIntro";
 import { CoupleSection } from "./components/CoupleSection";
+import { QuranSection } from "./components/QuranSection";
+import { FamiliesSection } from "./components/FamiliesSection";
 import { MessageSection } from "./components/MessageSection";
 import { DateSection } from "./components/DateSection";
 import { VenueSection } from "./components/VenueSection";
@@ -17,7 +19,7 @@ function getScrollY(): number {
 }
 
 function scrollTo(y: number) {
-   try {
+  try {
     window.scrollTo({ top: y, behavior: "instant" as ScrollBehavior });
   } catch {
     window.scrollTo(0, y);
@@ -113,6 +115,10 @@ function App() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <CoupleSection />
+            <SectionDivider />
+            <QuranSection />
+            <SectionDivider />
+            <FamiliesSection />
             <SectionDivider />
             <EngagementTimeline />
             <SectionDivider />

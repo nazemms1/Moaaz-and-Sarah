@@ -1,13 +1,21 @@
-export type Lang = "ar" | "en";
+export type Lang = "ar";
 
 export const translations = {
   ar: {
-    partner1: "بشر",
-    partner2: "جودي",
+    partner1: "محمد معاذ",
+    partner2: "سارة",
+    partner1Title: "الدكتور",
+    partner2Title: "الدكتورة",
+    partner1Father: "ابن الأستاذ صبحي حباب",
+    partner2Father: "ابنة الأستاذ عماد ريحاوي",
+    partner1Relation: "نجل",
+    partner1FatherName: "الأستاذ صبحي حباب",
+    partner2Relation: "كريمة",
+    partner2FatherName: "الأستاذ عماد ريحاوي",
     tagline: "نحتفل بزفافنا",
-    displayDate: "الأحد، ٣ مايو ٢٠٢٦",
-    displayTime: "٧:٠٠ مساءً",
-    venueName: "صالة اللافندا",
+    displayDate: "الثلاثاء، ٢ يونيو ٢٠٢٦",
+    displayTime: "٨:٠٠ مساءً",
+    venueName: "قاعة الياسمين — البهية",
     venueAddress: "دمشق، سوريا",
 
     cordiallyInvited: "يسعدنا دعوتكم",
@@ -22,11 +30,11 @@ export const translations = {
       "حضوركم وضحكاتكم ومحبتكم شكّلت من نحن، ولا أحد سوى أنتم يستحق أن يكون بجانبنا ونحن نبدأ هذه الرحلة الجميلة معاً.",
       "انضموا إلينا لتبادل الأيمان والاحتفال بالحب الذي قادنا إلى هذه اللحظة السحرية.",
     ],
-    signature: "بكل محبتنا، بشر وجودي",
+    signature: "بكل محبتنا، محمد معاذ وسارة",
 
     saveTheDate: "احفظوا الموعد",
     weAreMarried: "أصبحنا زوجين",
-    congratsHeading: "مبروك يا بشر وجودي",
+    congratsHeading: "مبروك يا محمد معاذ وسارة",
     congratsSubtitle:
       "بدأت رحلتكما معاً — كلّ عام وأنتما بخير وسعادة وحب لا ينتهي",
     congratsTagline: "شكراً لكم على مشاركتنا هذه اللحظة الجميلة",
@@ -51,116 +59,35 @@ export const translations = {
     wishesShared: "أمنية مشتركة",
     wishesSharedPlural: "أمنيات مشتركة",
 
-    timelineEyebrow: "رحلة الحب",
-    timelineTitle: "من الخطوبة إلى الزفاف",
-    timelineSubtitle: "كل خطوة في مسيرتنا كانت بداية لفصل جديد",
+    timelineEyebrow: "برنامج الحفل",
+    timelineTitle: "بَرْنَامَجُ الحَفْلِ",
+    timelineSubtitle: "نسعد بمشاركتكم كل لحظة من ليلتنا المميزة",
     timelineEvents: [
       {
-        date: "15 يناير 2025",
-        title: "الطلبة الرسمية",
-        description:
-          "لحظة ثمينة تمت فيها الطلبة الرسمية، لتبدأ قصة حب تحمل أجمل المعاني وأصدق التقاليد.",
+        date: "٨:٠٠ مساءً",
+        title: "بَدْءُ الاحتِفَال",
+        description: "تُفتَح أبواب القاعة وتبدأ ليلة العمر، نرحب بضيوفنا الكرام ويبدأ الاحتفال.",
+        icon: "✦",
+      },
+      {
+        date: "١١:٠٠ مساءً",
+        title: "دُخُولُ العَرِيس",
+        description: "اللحظة الأهم في الحفل، دخول العريس محمد معاذ في مشهد لا يُنسى.",
         icon: "◈",
       },
       {
-        date: "31 يناير 2025",
-        title: "كتب الكتاب",
-        description:
-          "توقيع عقد الزواج المقدس (كتب الكتاب)، توحدت قلوبنا وأرواحنا أمام الله وبين عائلاتنا وأحبابنا.",
+        date: "١٢:٠٠ منتصف الليل",
+        title: "خِتَامُ الحَفْلِ",
+        description: "نودّع الليلة بأجمل الذكريات وأصدق المشاعر، شكراً لكل من شاركنا هذه اللحظة.",
         icon: "❧",
-      },
-      {
-        date: "3 مايو 2026",
-        title: "يوم العرس",
-        description:
-          "اليوم الذي طال انتظاره، حيث نتوحد كقلب واحد، ونحتفل بحبنا وسط الأهل والأصدقاء.",
-        icon: "✦",
       },
     ],
   },
 
-  en: {
-    partner1: "Bisher",
-    partner2: "Judy",
-    tagline: "We're getting married!",
-    displayDate: "Sunday, May 3rd, 2026",
-    displayTime: "7:00 PM",
-    venueName: "Lavanda Hall",
-    venueAddress: "Damascus, Syria",
-
-    cordiallyInvited: "You are cordially invited",
-    tapToOpen: "tap to open",
-
-    scrollDown: "Scroll",
-
-    eyebrow: "A Message from the Heart",
-    messageTitle: "Join Our Celebration",
-    messageParagraphs: [
-      "With hearts overflowing with joy and gratitude, we invite you to be part of our most cherished celebration.",
-      "Your presence, laughter, and love have shaped who we are, and there is no one else we would rather have beside us as we begin this beautiful journey together.",
-      "Please join us as we exchange our vows and celebrate the love that has brought us to this magical moment.",
-    ],
-    signature: "With all our love, Bisher & Judy",
-
-    saveTheDate: "Save the Date",
-    weAreMarried: "We Are Married",
-    congratsHeading: "Congratulations Bisher & Judy",
-    congratsSubtitle:
-      "Your journey together has begun — wishing you a lifetime of love, joy, and endless happiness",
-    congratsTagline: "Thank you for celebrating this beautiful moment with us",
-    days: "Days",
-    hours: "Hours",
-    minutes: "Minutes",
-    seconds: "Seconds",
-
-    locationEyebrow: "Venue",
-    venueTitle: "The Celebration Hall",
-    getDirections: "Get Directions",
-
-    leaveAWish: "Leave a Wish",
-    congratsBook: "Congratulations Book",
-    shareWishes: "Share your love and well wishes for",
-    yourName: "Your Name",
-    yourMessage: "Your Message",
-    namePlaceholder: "e.g. Sarah & Mark",
-    messagePlaceholder: "Share your wishes, memories, or a heartfelt note…",
-    sendWishes: "Send Wishes",
-    messageSent: "Message sent!",
-    wishesShared: "Wish Shared",
-    wishesSharedPlural: "Wishes Shared",
-
-    timelineEyebrow: "Our Journey",
-    timelineTitle: "From Engagement to Wedding",
-    timelineSubtitle:
-      "Every step in our journey was the beginning of a new chapter",
-    timelineEvents: [
-      {
-        date: "January 15, 2025",
-        title: "Proposal",
-        description:
-          "A cherished moment when the formal proposal took place, sealing our promise with love and tradition.",
-        icon: "◈",
-      },
-      {
-        date: "January 31, 2025",
-        title: "official engagement",
-        description:
-          "Signing the sacred marriage contract (Katb Al-Kitab), uniting our hearts and souls before God and our families.",
-        icon: "❧",
-      },
-      {
-        date: "May 3, 2026",
-        title: "Wedding Day",
-        description:
-          "The long-awaited day when we unite as one, celebrating our love surrounded by family and friends.",
-        icon: "✦",
-      },
-    ],
-  },
 } as const;
 
 export type Translations = {
-  [K in keyof (typeof translations)["en"]]: K extends "timelineEvents"
+  [K in keyof (typeof translations)["ar"]]: K extends "timelineEvents"
     ? ReadonlyArray<{
         date: string;
         title: string;

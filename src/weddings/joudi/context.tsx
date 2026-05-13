@@ -9,8 +9,8 @@ interface LanguageContextValue {
 }
 
 export const LanguageContext = createContext<LanguageContextValue>({
-  lang: "en",
-  t: translations.en,
+  lang: "ar",
+  t: translations.ar,
   dir: "rtl",
 });
 
@@ -19,8 +19,5 @@ export function useLanguage() {
 }
 
 export function detectLang(): Lang {
-  const path = window.location.pathname;
-  if (path.includes("/en")) return "en";
-  if (path.includes("/ar")) return "ar";
-  return "en";
+  return "ar" as Lang;
 }

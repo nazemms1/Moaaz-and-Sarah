@@ -6,6 +6,8 @@ export interface SiteConfig {
   couple: {
     partner1: string
     partner2: string
+    partner1Father: string
+    partner2Father: string
     tagline: string
   }
   
@@ -44,6 +46,7 @@ export interface SiteConfig {
     venue: string
     guestbook: string
     engagment: string
+    backgroundImage: string
   }
    
   guestbook: {
