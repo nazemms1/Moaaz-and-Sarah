@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
 import { config } from "../config";
-import { theme } from "../theme";
 import { useLanguage } from "../context";
 
-const GOLD = "#C9A84C";
+const GOLD = "#C5A46D";
+const OW = "#F5F0E8";
 const BG_CARD = "#FFFDF8";
-// const BG_DEEP = "#F5F0E8";
 const g = (a: number) => `rgba(201,168,76,${a})`;
+const ow = (a: number) => `rgba(245,240,232,${a})`;
 
 const SCH = "'Scheherazade New', 'Amiri', serif";
 const AMIRI = "'Amiri', 'Scheherazade New', serif";
@@ -24,63 +24,8 @@ export function VenueSection() {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9 }}
     >
-      {/* Background */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${config.sectionImages.venue})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      />
-      <div
-        className="absolute inset-0"
-        style={{ background: theme.bg.section, opacity: 0.9 }}
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: theme.bg.vignette }}
-      />
-
-      {/* Gold glow */}
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          inset: 0,
-          background: `radial-gradient(ellipse 55% 40% at 50% 50%, ${g(0.07)} 0%, transparent 70%)`,
-        }}
-        animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.1, 1] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Dust particles */}
-      <div
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-        aria-hidden="true"
-      >
-        {Array.from({ length: 22 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: 1 + (i % 5) * 0.5,
-              height: 1 + (i % 5) * 0.5,
-              left: `${(i * 4.7 + 2) % 100}%`,
-              top: `${(i * 5.1 + 4) % 100}%`,
-              background: theme.dust[i % 4],
-            }}
-            animate={{ opacity: [0, 0.9, 0], scale: [0, 1.8, 0] }}
-            transition={{
-              duration: 3 + (i % 6) * 0.7,
-              repeat: Infinity,
-              delay: (i * 0.33) % 5,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
+      {/* Background — warm gold/brown solid */}
+      <div className="absolute inset-0" style={{ background: "#C5A46D" }} />
 
       {/* Corner ornaments */}
       {[
@@ -133,7 +78,7 @@ export function VenueSection() {
       ))}
 
       <div className="relative z-10 max-w-xl mx-auto">
-        {/* Top divider */}
+        {/* Top divider — off-white on gold bg */}
         <motion.div
           className="flex items-center justify-center gap-3 mb-8"
           initial={{ opacity: 0, y: -10 }}
@@ -143,38 +88,80 @@ export function VenueSection() {
           <div
             className="h-px w-10 sm:w-16"
             style={{
-              background: `linear-gradient(to right, transparent, ${g(0.45)})`,
+              background: `linear-gradient(to right, transparent, ${ow(0.6)})`,
             }}
           />
           <div
             className="w-1 h-1 rounded-full"
-            style={{ background: GOLD, opacity: 0.5 }}
+            style={{ background: OW, opacity: 0.7 }}
           />
           <div
             className="h-px w-10 sm:w-16"
             style={{
-              background: `linear-gradient(to left, transparent, ${g(0.45)})`,
+              background: `linear-gradient(to left, transparent, ${ow(0.6)})`,
             }}
           />
         </motion.div>
 
         {/* Section title */}
         <motion.h2
-          className="text-center mb-8"
+          className="text-center mb-2"
           style={{
             fontFamily: SCH,
             fontSize: "clamp(2.2rem, 7vw, 3.8rem)",
             fontWeight: 700,
-            color: GOLD,
+            color: OW,
             lineHeight: 1.2,
-            textShadow: `0 0 40px ${g(0.2)}`,
+            textShadow: `0 2px 24px rgba(0,0,0,0.18)`,
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ delay: 0.25, duration: 0.8 }}
         >
           تَفَاصِيلُ الحَفْل
         </motion.h2>
+
+        {/* EVENT DETAILS subtitle */}
+        <motion.p
+          className="text-center mb-8"
+          style={{
+            fontFamily: AMIRI,
+            fontSize: "clamp(0.6rem, 1.6vw, 0.74rem)",
+            letterSpacing: "0.38em",
+            color: ow(0.65),
+            direction: "ltr",
+          }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.38, duration: 0.7 }}
+        >
+          EVENT DETAILS
+        </motion.p>
+
+        {/* Bottom divider before card */}
+        <motion.div
+          className="flex items-center justify-center gap-3 mb-8"
+          initial={{ opacity: 0, scaleX: 0.3 }}
+          animate={inView ? { opacity: 1, scaleX: 1 } : {}}
+          transition={{ delay: 0.42, duration: 0.9 }}
+        >
+          <div
+            className="h-px w-16 sm:w-24"
+            style={{
+              background: `linear-gradient(to right, transparent, ${ow(0.45)})`,
+            }}
+          />
+          <div
+            className="w-1.5 h-1.5 rotate-45"
+            style={{ background: ow(0.55) }}
+          />
+          <div
+            className="h-px w-16 sm:w-24"
+            style={{
+              background: `linear-gradient(to left, transparent, ${ow(0.45)})`,
+            }}
+          />
+        </motion.div>
 
         {/* ── Main card ── */}
         <motion.div
@@ -194,6 +181,7 @@ export function VenueSection() {
             style={{
               background: BG_CARD,
               border: `1px solid ${g(0.18)}`,
+              borderRadius: "1.25rem",
               boxShadow: `0 6px 40px ${g(0.12)}, 0 1px 0 ${g(0.15)}`,
               padding: "clamp(2rem, 5vw, 3rem) clamp(1.6rem, 4vw, 2.5rem)",
             }}
@@ -458,6 +446,7 @@ export function VenueSection() {
           className="relative mt-5"
           style={{
             border: `1px solid ${g(0.18)}`,
+            borderRadius: "1.25rem",
             boxShadow: `0 4px 28px ${g(0.1)}`,
             overflow: "hidden",
           }}

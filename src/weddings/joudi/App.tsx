@@ -4,9 +4,11 @@ import { EnvelopeIntro } from "./components/EnvelopeIntro";
 import { CoupleSection } from "./components/CoupleSection";
 import { QuranSection } from "./components/QuranSection";
 import { FamiliesSection } from "./components/FamiliesSection";
-import { MessageSection } from "./components/MessageSection";
+// import { MessageSection } from "./components/MessageSection";
 import { DateSection } from "./components/DateSection";
+import { PresenceSection } from "./components/PresenceSection";
 import { VenueSection } from "./components/VenueSection";
+import { RsvpSection } from "./components/RsvpSection";
 import { EngagementTimeline } from "./components/EngagementTimeline";
 import { BackToTop } from "../../shared/BackToTop";
 import { SectionDivider } from "../../shared/SectionDivider";
@@ -32,16 +34,24 @@ function App() {
             <CoupleSection />
             <SectionDivider />
             <QuranSection />
-            <SectionDivider />
-            <FamiliesSection />
-            <SectionDivider />
-            <EngagementTimeline />
-            <SectionDivider />
-            <MessageSection />
+
             <SectionDivider />
             <DateSection />
             <SectionDivider />
+            <PresenceSection />
+            <SectionDivider />
+            <FamiliesSection />
+            <SectionDivider />
+
+            <EngagementTimeline />
+            {/* <SectionDivider />
+            <MessageSection /> */}
+
+            <SectionDivider />
+
             <VenueSection />
+            <SectionDivider />
+            <RsvpSection />
           </motion.main>
         )}
       </AnimatePresence>

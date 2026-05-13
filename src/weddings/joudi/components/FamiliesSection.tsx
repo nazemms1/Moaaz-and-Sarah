@@ -3,64 +3,13 @@ import { useScrollAnimation } from "../../../hooks/useScrollAnimation";
 import { theme } from "../theme";
 import { config } from "../config";
 
-const GOLD = "#C9A84C";
-const BG_CARD = "#FFFDF8";
-const g = (a: number) => `rgba(201,168,76,${a})`;
+const GOLD = "#C5A46D";
+const BG_CARD = "#FFFFFF";
+const g = (a: number) => `rgba(197,164,109,${a})`;
 
 const SCH = "'Scheherazade New', 'Amiri', serif";
 const AMIRI = "'Amiri', 'Scheherazade New', serif";
 
-function RingIcon() {
-  return (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-      <defs>
-        <filter id="ringGlow">
-          <feGaussianBlur stdDeviation="1.5" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <g filter="url(#ringGlow)">
-        <circle
-          cx="22"
-          cy="22"
-          r="16"
-          stroke={GOLD}
-          strokeWidth="1.5"
-          strokeOpacity="0.7"
-          fill="none"
-        />
-        <circle
-          cx="22"
-          cy="22"
-          r="11"
-          stroke={GOLD}
-          strokeWidth="0.7"
-          strokeOpacity="0.35"
-          fill="none"
-          strokeDasharray="2 3"
-        />
-        <circle cx="22" cy="22" r="4.5" fill={GOLD} opacity="0.9" />
-        <circle cx="22" cy="22" r="2.5" fill="#FFFDF8" opacity="0.8" />
-        {[0, 60, 120, 180, 240, 300].map((deg, i) => {
-          const r = (deg * Math.PI) / 180;
-          return (
-            <circle
-              key={i}
-              cx={22 + Math.cos(r) * 16}
-              cy={22 + Math.sin(r) * 16}
-              r="1.5"
-              fill={GOLD}
-              opacity="0.6"
-            />
-          );
-        })}
-      </g>
-    </svg>
-  );
-}
 
 function FamilyCard({
   tag,
@@ -78,61 +27,30 @@ function FamilyCard({
       className="w-full"
       initial={{ opacity: 0, y: 32 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{
-        delay,
-        duration: 0.9,
-        type: "spring",
-        stiffness: 55,
-        damping: 16,
-      }}
+      transition={{ delay, duration: 0.9, type: "spring", stiffness: 55, damping: 16 }}
     >
       <div
         className="relative flex flex-col items-center"
         style={{
           background: BG_CARD,
-          border: `1px solid ${g(0.2)}`,
-          boxShadow: `0 6px 36px ${g(0.1)}, inset 0 1px 0 ${g(0.15)}, inset 0 -1px 0 ${g(0.07)}`,
-          padding: "clamp(1.8rem, 5vw, 2.8rem) clamp(1.6rem, 5vw, 2.4rem)",
+          border: `1px solid ${g(0.18)}`,
+          boxShadow: `0 4px 24px ${g(0.08)}, 0 1px 0 ${g(0.12)}`,
+          padding: "clamp(1.6rem, 4vw, 2.4rem) clamp(1.4rem, 4vw, 2.2rem)",
         }}
       >
-        {/* Top gold bar */}
-        <div
-          className="absolute top-0 left-0 right-0 h-0.5"
-          style={{
-            background: `linear-gradient(to right, transparent, ${GOLD}, transparent)`,
-          }}
-        />
-
         {/* Corner marks */}
         {(["tl", "tr", "bl", "br"] as const).map((pos) => {
           const t2 = pos[0] === "t";
-          const l = pos[1] === "l";
+          const l  = pos[1] === "l";
           return (
-            <div
-              key={pos}
-              className="absolute"
-              style={{
-                top: t2 ? 7 : undefined,
-                bottom: t2 ? undefined : 7,
-                left: l ? 7 : undefined,
-                right: l ? undefined : 7,
-              }}
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <div key={pos} className="absolute" style={{
+              top: t2 ? 8 : undefined, bottom: t2 ? undefined : 8,
+              left: l ? 8 : undefined, right: l ? undefined : 8,
+            }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
-                  d={
-                    t2 && l
-                      ? "M0 12 L0 0 L12 0"
-                      : t2
-                        ? "M14 12 L14 0 L2 0"
-                        : l
-                          ? "M0 2 L0 14 L12 14"
-                          : "M14 2 L14 14 L2 14"
-                  }
-                  stroke={GOLD}
-                  strokeWidth="1.3"
-                  opacity="0.45"
-                  strokeLinecap="round"
+                  d={t2 && l ? "M0 14 L0 0 L14 0" : t2 ? "M16 14 L16 0 L2 0" : l ? "M0 2 L0 16 L14 16" : "M16 2 L16 16 L2 16"}
+                  stroke={GOLD} strokeWidth="1.2" opacity="0.5" strokeLinecap="round"
                 />
               </svg>
             </div>
@@ -141,74 +59,56 @@ function FamilyCard({
 
         {/* Tag pill */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: delay + 0.12, duration: 0.6 }}
+          transition={{ delay: delay + 0.1, duration: 0.55 }}
           style={{
-            background: g(0.09),
-            border: `1px solid ${g(0.28)}`,
+            background: g(0.1),
+            border: `1px solid ${g(0.3)}`,
             borderRadius: "999px",
-            padding: "0.28em 1.2em",
-            marginBottom: "1.1em",
+            padding: "0.22em 1.1em",
+            marginBottom: "1rem",
           }}
         >
-          <span
-            style={{
-              fontFamily: AMIRI,
-              fontSize: "clamp(0.78rem, 1.9vw, 0.92rem)",
-              color: GOLD,
-              letterSpacing: "0.06em",
-            }}
-          >
+          <span style={{
+            fontFamily: AMIRI,
+            fontSize: "clamp(0.72rem, 1.8vw, 0.86rem)",
+            color: GOLD,
+            letterSpacing: "0.04em",
+          }}>
             {tag}
           </span>
         </motion.div>
 
-        {/* Ring icon */}
-        <motion.div
-          className="mb-3"
-          initial={{ opacity: 0, scale: 0.6, rotate: -15 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{
-            delay: delay + 0.2,
-            duration: 1,
-            type: "spring",
-            stiffness: 60,
-          }}
-        >
-          <RingIcon />
-        </motion.div>
-
-        {/* Title — حَرَمُ ... */}
+        {/* Title */}
         <motion.h2
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: delay + 0.3, duration: 0.85, type: "spring" }}
+          transition={{ delay: delay + 0.22, duration: 0.85, type: "spring" }}
           style={{
             fontFamily: SCH,
-            fontSize: "clamp(1.55rem, 5.5vw, 2.6rem)",
+            fontSize: "clamp(1.65rem, 5.5vw, 2.7rem)",
             fontWeight: 700,
             color: GOLD,
-            lineHeight: 1.4,
+            lineHeight: 1.35,
             textAlign: "center",
-            textShadow: `0 0 28px ${g(0.22)}`,
-            marginBottom: "0.2em",
+            marginBottom: "0.15em",
             direction: "rtl",
           }}
         >
           {title}
         </motion.h2>
 
-        {/* Gold divider */}
+        {/* Gold thin rule */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ delay: delay + 0.42, duration: 0.75 }}
+          transition={{ delay: delay + 0.38, duration: 0.7 }}
           style={{
-            width: "40%",
+            width: "38%",
             height: "1px",
-            background: `linear-gradient(to right, transparent, ${GOLD}, transparent)`,
-            margin: "0.7em 0",
+            background: `linear-gradient(to right, transparent, ${g(0.55)}, transparent)`,
+            margin: "0.65em 0",
           }}
         />
 
@@ -216,11 +116,11 @@ function FamilyCard({
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: delay + 0.52, duration: 0.7 }}
+          transition={{ delay: delay + 0.48, duration: 0.7 }}
           style={{
             fontFamily: AMIRI,
-            fontSize: "clamp(0.92rem, 2.4vw, 1.12rem)",
-            color: `rgba(120,90,30,0.72)`,
+            fontSize: "clamp(0.9rem, 2.3vw, 1.1rem)",
+            color: `rgba(100,72,20,0.65)`,
             textAlign: "center",
             lineHeight: 1.8,
             direction: "rtl",
@@ -363,7 +263,7 @@ export function FamiliesSection() {
 
         {/* Section title */}
         <motion.h2
-          className="text-center mb-2"
+          className="text-center mb-1"
           style={{
             fontFamily: SCH,
             fontSize: "clamp(2.2rem, 7vw, 3.8rem)",
@@ -379,18 +279,22 @@ export function FamiliesSection() {
           أَهْلُ العَرُوسَيْن
         </motion.h2>
 
-        {/* Dot separator */}
-        <motion.div
-          className="flex justify-center mb-10"
+        {/* English subtitle */}
+        <motion.p
+          className="text-center mb-8"
+          style={{
+            fontFamily: AMIRI,
+            fontSize: "clamp(0.6rem, 1.6vw, 0.74rem)",
+            letterSpacing: "0.38em",
+            color: g(0.65),
+            direction: "ltr",
+          }}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
         >
-          <div
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ background: g(0.5) }}
-          />
-        </motion.div>
+          THE FAMILIES
+        </motion.p>
 
         {/* Family cards */}
         <div className="flex flex-col gap-6">

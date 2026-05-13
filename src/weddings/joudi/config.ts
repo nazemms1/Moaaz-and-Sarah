@@ -2,7 +2,7 @@ import type { SiteConfig } from "../../types/config";
 
 export const config: SiteConfig = {
   meta: {
-    title: "Dr. Muhammad Mu'adh & Dr. Sarah | June 2, 2026",
+    title: "Dr. Sarah & Dr. Muhammad Moaaz Habbab | June 2, 2026",
     language: "ar",
   },
   couple: {
@@ -19,7 +19,7 @@ export const config: SiteConfig = {
       "حضوركم وضحكاتكم ومحبتكم شكّلت من نحن، ولا أحد سوى أنتم يستحق أن يكون بجانبنا ونحن نبدأ هذه الرحلة الجميلة معاً.",
       "انضموا إلينا لتبادل الأيمان والاحتفال بالحب الذي قادنا إلى هذه اللحظة السحرية.",
     ],
-    signature: "بكل محبتنا، محمد معاذ وسارة",
+    signature: "بكل محبتنا، الدكتور محمد معاذ والدكتورة سارة",
   },
   event: {
     weddingDate: "2026-06-02T20:00:00",
@@ -72,7 +72,7 @@ export const config: SiteConfig = {
     date: "/Moaaz-Habbab-Wedding/date.jpeg",
     venue: "/Moaaz-Habbab-Wedding/venue.jpeg",
     guestbook: "/Moaaz-Habbab-Wedding/guestbook.jpeg",
-    engagment: "/Moaaz-Habbab-Wedding/engagement.jpeg",
+    engagment: "/Moaaz-Habbab-Wedding/backgroundImage.jpeg",
     backgroundImage: "/Moaaz-Habbab-Wedding/backgroundImage.jpg",
   },
 

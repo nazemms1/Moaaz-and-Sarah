@@ -4,12 +4,12 @@ import { theme } from "../theme";
 import { config } from "../config";
 
 const GOLD = "#C9A84C";
-const GOLD_LT = "#D4AF6E";
+// const GOLD_LT = "#D4AF6E";
 // const GOLD_BR = "#E8CC80";
-const BG_CARD = "#FFFDF8";
+// const BG_CARD = "#FFFDF8";
 const g = (a: number) => `rgba(201,168,76,${a})`;
 
-const SCH = "'Scheherazade New', 'Amiri', serif";
+const RUQAA = "'Aref Ruqaa', 'Scheherazade New', serif";
 const AMIRI = "'Amiri', 'Scheherazade New', serif";
 
 export function QuranSection() {
@@ -141,37 +141,8 @@ export function QuranSection() {
           initial={{ opacity: 0, y: -10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1, duration: 0.8 }}
-        >
-          <div
-            className="h-px w-10 sm:w-16"
-            style={{
-              background: `linear-gradient(to right, transparent, ${g(0.5)})`,
-            }}
-          />
-          <div
-            className="w-1 h-1 rounded-full"
-            style={{ background: GOLD, opacity: 0.5 }}
-          />
-          <div
-            className="h-px w-10 sm:w-16"
-            style={{
-              background: `linear-gradient(to left, transparent, ${g(0.5)})`,
-            }}
-          />
-        </motion.div>
+        ></motion.div>
 
-        {/* Eyebrow */}
-        <motion.p
-          className="text-xs tracking-[0.45em] uppercase mb-10 text-center"
-          style={{ color: GOLD, fontFamily: AMIRI }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.7 }}
-        >
-          من آيات الله
-        </motion.p>
-
-        {/* Ornate card */}
         <motion.div
           className="relative"
           initial={{ opacity: 0, y: 32 }}
@@ -187,9 +158,9 @@ export function QuranSection() {
           <div
             className="relative flex flex-col items-center"
             style={{
-              background: BG_CARD,
-              border: `1px solid ${g(0.2)}`,
-              boxShadow: `0 6px 40px ${g(0.1)}, inset 0 1px 0 ${g(0.18)}, inset 0 -1px 0 ${g(0.08)}`,
+              // background: BG_CARD,
+              // border: `1px solid ${g(0.2)}`,
+              // boxShadow: `0 6px 40px ${g(0.1)}, inset 0 1px 0 ${g(0.18)}, inset 0 -1px 0 ${g(0.08)}`,
               padding: "clamp(2.2rem, 5vw, 3.5rem) clamp(1.8rem, 5vw, 3rem)",
             }}
           >
@@ -201,6 +172,29 @@ export function QuranSection() {
               }}
             />
 
+            {/* Ayah */}
+            <motion.p
+              style={{
+                fontFamily: RUQAA,
+                fontSize: "clamp(1.5rem, 4.5vw, 2.4rem)",
+                fontWeight: 700,
+                color: GOLD,
+                textAlign: "center",
+                lineHeight: 2.1,
+                direction: "rtl",
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                delay: 0.95,
+                duration: 1,
+                type: "spring",
+                stiffness: 60,
+              }}
+            >
+              ﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
+              لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾
+            </motion.p>
             {/* Surah label */}
             <motion.p
               style={{
@@ -215,93 +209,8 @@ export function QuranSection() {
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.65, duration: 0.7 }}
             >
-              سورة الروم — الآية ٢١
+              سُورَةُ الرُّومِ - آيَة ٢١
             </motion.p>
-
-            {/* Bismillah */}
-            <motion.p
-              style={{
-                fontFamily: SCH,
-                fontSize: "clamp(1rem, 2.8vw, 1.35rem)",
-                color: GOLD_LT,
-                textAlign: "center",
-                lineHeight: 1.9,
-                marginBottom: "1em",
-                opacity: 0.85,
-              }}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 0.85 } : {}}
-              transition={{ delay: 0.75, duration: 0.8 }}
-            >
-              بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ
-            </motion.p>
-
-            {/* Gold rule */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={inView ? { scaleX: 1 } : {}}
-              transition={{ delay: 0.85, duration: 0.8 }}
-              style={{
-                width: "45%",
-                height: "1px",
-                margin: "0 auto 1.6em",
-                background: `linear-gradient(to right, transparent, ${GOLD}, transparent)`,
-              }}
-            />
-
-            {/* Ayah */}
-            <motion.p
-              style={{
-                fontFamily: SCH,
-                fontSize: "clamp(1.5rem, 4.5vw, 2.4rem)",
-                fontWeight: 700,
-                color: `rgba(80,58,18,0.9)`,
-                textAlign: "center",
-                lineHeight: 2.1,
-                direction: "rtl",
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                delay: 0.95,
-                duration: 1,
-                type: "spring",
-                stiffness: 60,
-              }}
-            >
-              وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا{" "}
-              <span style={{ color: GOLD }}>لِّتَسْكُنُوا إِلَيْهَا</span>{" "}
-              وَجَعَلَ بَيْنَكُم{" "}
-              <span style={{ color: GOLD }}>مَّوَدَّةً وَرَحْمَةً</span> ۚ إِنَّ
-              فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
-            </motion.p>
-
-            {/* Animated dots */}
-            <motion.div
-              className="flex items-center justify-center gap-2 mt-8"
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 1.3, duration: 0.7 }}
-            >
-              {[GOLD, g(0.5), g(0.22)].map((col, i) => (
-                <motion.div
-                  key={i}
-                  style={{
-                    width: 5 - i * 1.2,
-                    height: 5 - i * 1.2,
-                    borderRadius: "50%",
-                    background: col,
-                    flexShrink: 0,
-                  }}
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={{
-                    duration: 2.6,
-                    repeat: Infinity,
-                    delay: i * 0.4,
-                  }}
-                />
-              ))}
-            </motion.div>
           </div>
         </motion.div>
 
