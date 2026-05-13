@@ -9,7 +9,6 @@ import { DateSection } from "./components/DateSection";
 import { VenueSection } from "./components/VenueSection";
 import { EngagementTimeline } from "./components/EngagementTimeline";
 import { BackToTop } from "../../shared/BackToTop";
-import { FloatingHearts } from "../../shared/FloatingHearts";
 import { SectionDivider } from "../../shared/SectionDivider";
 
 const SCROLL_SPEED = 2.5;
@@ -99,8 +98,6 @@ function App() {
 
   return (
     <>
-      <FloatingHearts />
-
       <AnimatePresence>
         {stage === "envelope" && (
           <EnvelopeIntro onOpen={() => setStage("main")} />
