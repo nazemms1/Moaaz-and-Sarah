@@ -8,49 +8,23 @@ interface EnvelopeIntroProps {
 
 export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
   const [stage, setStage] = useState<"idle" | "playing">("idle");
-  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Try muted autoplay first (required by iOS/Chrome autoplay policy)
-    const tryAutoPlay = () => {
-      video.muted = true;
-      video.play()
-        .then(() => setStage("playing"))
-        .catch(() => setStage("idle"));
-    };
-
-    if (video.readyState >= 3) {
-      tryAutoPlay();
-    } else {
-      video.addEventListener("canplaythrough", tryAutoPlay, { once: true });
-    }
-  }, []);
-
   function handleClick() {
+    if (stage !== "idle") return;
     const video = videoRef.current;
     if (!video) return;
-
-    if (stage === "playing") return;
-
+    setStage("playing");
     video.muted = true;
     video.play().catch(() => onOpen());
-    setStage("playing");
   }
 
-  function handleVideoEnded() {
-    onOpen();
-  }
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.addEventListener("ended", onOpen);
+    return () => video.removeEventListener("ended", onOpen);
+  }, [onOpen]);
 
   return (
     <div
@@ -64,33 +38,64 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
         playsInline
         muted
         preload="auto"
-        onEnded={handleVideoEnded}
         className="w-full h-full object-cover"
+        style={{ display: stage === "playing" ? "block" : "none" }}
       />
+
       {stage === "idle" && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
           <motion.div
-            animate={{ scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              width: isMobile ? 64 : 80,
-              height: isMobile ? 64 : 80,
-              borderRadius: "50%",
-              background: "rgba(0,0,0,0.5)",
-              border: `2px solid ${theme.color.gold}`,
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
+              gap: "16px",
             }}
           >
-            <svg
-              width={isMobile ? 24 : 30}
-              height={isMobile ? 24 : 30}
-              viewBox="0 0 24 24"
-              fill={theme.color.gold}
+            {/* Decorative ring */}
+            <div
+              style={{
+                width: 90,
+                height: 90,
+                borderRadius: "50%",
+                border: `2px solid ${theme.color.gold}`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
-              <polygon points="6,4 20,12 6,20" />
-            </svg>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={theme.color.gold} strokeWidth="1.5">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </div>
+
+            {/* Arabic text */}
+            <p style={{
+              color: theme.color.gold,
+              fontFamily: theme.font.display,
+              fontSize: "clamp(1rem, 4vw, 1.4rem)",
+              letterSpacing: "0.05em",
+              textAlign: "center",
+              margin: 0,
+            }}>
+              اضغط لفتح الدعوة
+            </p>
+
+            {/* English text */}
+            <p style={{
+              color: theme.color.goldLight,
+              fontFamily: theme.font.body,
+              fontSize: "clamp(0.75rem, 2.5vw, 0.95rem)",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              textAlign: "center",
+              margin: 0,
+              opacity: 0.7,
+            }}>
+              Tap to open invitation
+            </p>
           </motion.div>
         </div>
       )}
