@@ -26,5 +26,5 @@ function copyIndexForRoutes() {
 
 export default defineConfig({
   plugins: [tailwindcss(), react(), copyIndexForRoutes()],
-  base: "/wedding/",
+  base: "/Moaaz-Habbab-Wedding/",
 });

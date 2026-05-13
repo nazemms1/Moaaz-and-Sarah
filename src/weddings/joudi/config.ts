@@ -66,14 +66,14 @@ export const config: SiteConfig = {
       "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
   },
   sectionImages: {
-    envelope: "/wedding/wedding.jpeg",
-    couple: "/wedding/wedding.jpeg",
-    message: "/wedding/message1.jpeg",
-    date: "/wedding/date.jpeg",
-    venue: "/wedding/venue.jpeg",
-    guestbook: "/wedding/guestbook.jpeg",
-    engagment: "/wedding/engagement.jpeg",
-    backgroundImage: "/wedding/backgroundImage.jpg",
+    envelope: "/Moaaz-Habbab-Wedding/wedding.jpeg",
+    couple: "/Moaaz-Habbab-Wedding/wedding.jpeg",
+    message: "/Moaaz-Habbab-Wedding/message1.jpeg",
+    date: "/Moaaz-Habbab-Wedding/date.jpeg",
+    venue: "/Moaaz-Habbab-Wedding/venue.jpeg",
+    guestbook: "/Moaaz-Habbab-Wedding/guestbook.jpeg",
+    engagment: "/Moaaz-Habbab-Wedding/engagement.jpeg",
+    backgroundImage: "/Moaaz-Habbab-Wedding/backgroundImage.jpg",
   },
 
   guestbook: {

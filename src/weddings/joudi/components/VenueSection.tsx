@@ -247,7 +247,7 @@ export function VenueSection() {
               }}
             >
               <img
-                src="/wedding/swans-framed-ByH4RE7t.png"
+                src="/Moaaz-Habbab-Wedding/swans-framed-ByH4RE7t.png"
                 alt=""
                 aria-hidden="true"
                 style={{

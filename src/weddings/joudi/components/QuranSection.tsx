@@ -128,7 +128,7 @@ export function QuranSection() {
           }}
         >
           <img
-            src="/wedding/imageOn.png"
+            src="/Moaaz-Habbab-Wedding/imageOn.png"
             alt=""
             aria-hidden="true"
             style={{ width: "clamp(120px, 30vw, 200px)", objectFit: "contain" }}

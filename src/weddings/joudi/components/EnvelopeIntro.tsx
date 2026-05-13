@@ -21,12 +21,21 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    setStage("playing");
-    video.play().catch(() => setStage("idle"));
+
+    const tryAutoPlay = () => {
+      video.play()
+        .then(() => setStage("playing"))
+        .catch(() => setStage("idle"));
+    };
+
+    if (video.readyState >= 3) {
+      tryAutoPlay();
+    } else {
+      video.addEventListener("canplaythrough", tryAutoPlay, { once: true });
+    }
   }, []);
 
   function handleClick() {
-    if (stage !== "idle") return;
     const video = videoRef.current;
     if (!video) return;
     setStage("playing");
@@ -45,11 +54,10 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
     >
       <video
         ref={videoRef}
-        src="/wedding/intro.mp4"
+        src="/Moaaz-Habbab-Wedding/intro.mp4"
         playsInline
         preload="auto"
         onEnded={handleVideoEnded}
-        onClick={(e) => e.stopPropagation()}
         className="w-full h-full object-cover"
       />
       {stage === "idle" && (

@@ -26,7 +26,7 @@
   --color-gold-dark: #B8924A;
 
  
-  --scrollbar-track: #050E1F;
+  --scrollbar-track: #F5F0E8;
   --scrollbar-thumb-start: #D4AF6E;
   --scrollbar-thumb-mid: #C9A84C;
   --scrollbar-thumb-end: #B8924A;
@@ -79,7 +79,7 @@ html[dir="rtl"] #root { text-align: right; }
 
 body {
   font-family: var(--font-body);
-  background-color: #050E1F;
+  background-color: #F5F0E8;
   color: var(--color-charcoal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
