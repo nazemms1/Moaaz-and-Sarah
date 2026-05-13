@@ -92,22 +92,6 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
               اضغط لفتح الدعوة
             </motion.p>
 
-            {/* English */}
-            <p
-              style={{
-                color: theme.color.gold,
-                fontFamily: theme.font.body,
-                fontSize: "clamp(0.65rem, 2vw, 0.8rem)",
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                margin: "8px 0 0",
-                opacity: 0.85,
-                textShadow: "0 1px 8px rgba(0,0,0,0.5)",
-              }}
-            >
-              Tap to open invitation
-            </p>
-
             {/* Thin gold line */}
             <motion.div
               style={{
