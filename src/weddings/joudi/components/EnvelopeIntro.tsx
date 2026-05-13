@@ -43,13 +43,8 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 
     if (stage === "playing") return;
 
-    // User gesture — unmute and play with sound
-    video.muted = false;
-    video.play().catch(() => {
-      // If unmuted play fails, try muted
-      video.muted = true;
-      video.play().catch(() => onOpen());
-    });
+    video.muted = true;
+    video.play().catch(() => onOpen());
     setStage("playing");
   }
 
