@@ -154,7 +154,7 @@ export function PresenceSection() {
 
         {/* Bow image */}
         <motion.img
-          src="/Moaaz-Habbab-Wedding/bow.png"
+          src="/Moaaz-and-Sarah/bow.png"
           alt=""
           initial={{ opacity: 0, scale: 0.5 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}

@@ -96,11 +96,11 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
         playsInline
         muted
         preload="auto"
-        poster="/Moaaz-Habbab-Wedding/intro-poster.jpg"
+        poster="/Moaaz-and-Sarah/intro-poster.jpg"
         className="w-full h-full object-cover"
         onEnded={onOpen}
       >
-        <source src="/Moaaz-Habbab-Wedding/intro.mp4" type="video/mp4" />
+        <source src="/Moaaz-and-Sarah/intro.mp4" type="video/mp4" />
       </video>
 
       {/* Loading screen */}

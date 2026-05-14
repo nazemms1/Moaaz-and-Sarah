@@ -10,7 +10,7 @@ import { PresenceSection } from "./components/PresenceSection";
 import { VenueSection } from "./components/VenueSection";
 import { RsvpSection } from "./components/RsvpSection";
 import { EngagementTimeline } from "./components/EngagementTimeline";
-import { BackToTop } from "../../shared/BackToTop";
+// import { BackToTop } from "../../shared/BackToTop";
 import { SectionDivider } from "../../shared/SectionDivider";
 import { useEffect, useRef } from "react";
 
@@ -47,7 +47,7 @@ function App() {
     document.documentElement.classList.add("auto-scrolling");
     let animationFrameId: number;
     let lastTime = performance.now();
-    const scrollSpeed = 0.65; // Elegant, slow speed
+    const scrollSpeed = 1.4; // Faster scroll speed
 
     const step = (currentTime: number) => {
       const delta = currentTime - lastTime;
@@ -150,7 +150,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      <BackToTop />
+      {/* <BackToTop /> */}
     </>
   );
 }
