@@ -61,8 +61,8 @@ export const translations = {
 
     rsvpTitle: "تَأكِيدُ الحُضُور",
     rsvpBody: "في حال الاعتذار، يُرجى إخبارنا قبل تاريخ",
-    rsvpDeadline: "٢٢ يونيو ٢٠٢٦",
-    rsvpDeadlineEn: "22 / 06 / 2026",
+    rsvpDeadline: " ٢٢ مايو ٢٠٢٦",
+    rsvpDeadlineEn: "22 / 05 / 2026",
     rsvpContact: "شكراً لتفهّمكم ومراعاتكم",
 
     timelineEyebrow: "برنامج الحفل",

@@ -361,7 +361,7 @@ export function VenueSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 1.05, duration: 0.8 }}
             >
-              سعدانا لا تكتمل إلا بوجودكم معنا
+              سعادتنالا تكتمل إلا بوجودكم معنا
             </motion.p>
 
             {/* No children notice */}
