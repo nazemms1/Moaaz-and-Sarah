@@ -26,15 +26,7 @@ function App() {
         setIsAutoScrolling(true);
       }, 3000);
 
-      // Play music
-      if (audioRef.current) {
-        audioRef.current.volume = 0.4;
-        audioRef.current.play().catch(() => {
-          console.log("Autoplay blocked. User interaction required.");
-        });
-      }
-
-      return () => clearTimeout(startTimeout);
+return () => clearTimeout(startTimeout);
     }
   }, [stage]);
 
@@ -54,13 +46,15 @@ function App() {
       lastTime = currentTime;
 
       // Ensure delta is reasonable to avoid jumps after tab switching
-      const normalizedDelta = Math.min(delta, 32); 
-      
+      const normalizedDelta = Math.min(delta, 32);
+
       window.scrollBy(0, scrollSpeed * (normalizedDelta / 16));
 
       // Check if we reached the bottom
-      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
-      
+      const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 10;
+
       if (!isAtBottom) {
         animationFrameId = requestAnimationFrame(step);
       } else {
@@ -96,11 +90,11 @@ function App() {
       <audio
         ref={audioRef}
         loop
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        src={"/Moaaz-and-Sarah/Ludovico Einaudi - Experience.m4a"}
       />
       <AnimatePresence>
         {stage === "envelope" && (
-          <EnvelopeIntro onOpen={() => setStage("main")} />
+          <EnvelopeIntro onOpen={() => setStage("main")} audioRef={audioRef} />
         )}
       </AnimatePresence>
 
@@ -130,21 +124,26 @@ function App() {
             <VenueSection />
             <SectionDivider />
             <RsvpSection />
-            
+
             {/* Resume Scroll Button - only shows if user interrupted and isn't at bottom */}
             {!isAutoScrolling && window.scrollY > 100 && (
-               <motion.button
+              <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="fixed bottom-24 right-6 z-50 bg-[#D4AF6E] text-white p-3 rounded-full shadow-lg flex items-center justify-center"
                 onClick={() => setIsAutoScrolling(true)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-               >
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                   <path d="M8 5v14l11-7z" />
-                 </svg>
-               </motion.button>
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </motion.button>
             )}
           </motion.main>
         )}

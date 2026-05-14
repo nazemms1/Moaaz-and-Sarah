@@ -4,11 +4,12 @@ import { theme } from "../theme";
 
 interface EnvelopeIntroProps {
   onOpen: () => void;
+  audioRef: React.RefObject<HTMLAudioElement | null>;
 }
 
 type Stage = "loading" | "ready" | "playing";
 
-export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
+export function EnvelopeIntro({ onOpen, audioRef }: EnvelopeIntroProps) {
   const [stage, setStage] = useState<Stage>("loading");
   const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -76,6 +77,12 @@ export function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
     if (!video) return;
 
     setStage("playing");
+
+    if (audioRef.current) {
+      audioRef.current.volume = 0.4;
+      audioRef.current.play().catch(() => {});
+    }
+
     try {
       video.muted = true;
       video.currentTime = 0;
