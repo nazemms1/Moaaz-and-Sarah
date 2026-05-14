@@ -34,11 +34,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity; /* Proximity is better than mandatory for variable height sections */
 }
 
 /* Disable smooth scroll when RAF-based auto-scroll is active (iOS Safari fix) */
 html.auto-scrolling {
   scroll-behavior: auto;
+  scroll-snap-type: none;
 }
 
 html[dir="rtl"] body,
@@ -97,6 +99,11 @@ body {
 
 .font-display {
   font-family: var(--font-display);
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 canvas.particles {
   position: fixed;

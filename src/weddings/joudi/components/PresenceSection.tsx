@@ -139,16 +139,17 @@ export function PresenceSection() {
           transition={{ delay: 0.55, duration: 0.9 }}
           style={{
             fontFamily: SCH,
-            fontSize: "clamp(1rem, 3vw, 1.4rem)",
+            fontSize: "clamp(1rem, 3vw, 1.5rem)",
             fontWeight: 400,
-            // color: GOLD,
             color: "#5A4A3ACC",
             lineHeight: 1.8,
-            margin: 0,
-            opacity: 0.85,
+            margin: "0 auto",
+            opacity: 0.9,
+            direction: "rtl",
+            maxWidth: "90%",
           }}
         >
-          سَعَادَتُنَا لَا تَكْتَمِل إِلَّا بِوُجُودِكُم مَعَنَا
+          نتشرف بدعوتكم لمشاركتنا فرحتنا في ليلة العمر، حضوركم يسعدنا ويتمم بهجتنا.
         </motion.p>
 
         {/* Bow image */}

@@ -257,7 +257,7 @@ export function DateSection() {
             margin: 0,
           }}
         >
-          مَوْعِدُ الفَرَح
+          باقي لموعد العرس
         </motion.h2>
 
         {/* THE CELEBRATION BEGINS IN */}

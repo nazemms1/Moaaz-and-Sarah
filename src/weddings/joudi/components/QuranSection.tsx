@@ -9,8 +9,9 @@ const GOLD = "#C9A84C";
 // const BG_CARD = "#FFFDF8";
 const g = (a: number) => `rgba(201,168,76,${a})`;
 
-const RUQAA = "'Aref Ruqaa', 'Scheherazade New', serif";
-const AMIRI = "'Amiri', 'Scheherazade New', serif";
+// const RUQAA = "'Aref /Ruqaa', 'Scheherazade New', serif";
+// const AMIRI = "'Amiri', 'Scheherazade New', serif";
+// const QURAN_FONT = "'Noto Naskh Arabic', 'Amiri', serif";
 
 export function QuranSection() {
   const [ref, inView] = useScrollAnimation();
@@ -175,13 +176,14 @@ export function QuranSection() {
             {/* Ayah */}
             <motion.p
               style={{
-                fontFamily: RUQAA,
-                fontSize: "clamp(1.5rem, 4.5vw, 2.4rem)",
-                fontWeight: 700,
+                fontFamily: "'Gulzar', serif",
+                fontSize: "clamp(2.5rem, 8vw, 4.2rem)",
+                fontWeight: 400,
                 color: GOLD,
                 textAlign: "center",
-                lineHeight: 2.1,
+                lineHeight: 1.4,
                 direction: "rtl",
+                textShadow: `0 0 50px ${g(0.15)}, 0 1px 1px rgba(0,0,0,0.05)`,
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -198,7 +200,7 @@ export function QuranSection() {
             {/* Surah label */}
             <motion.p
               style={{
-                fontFamily: AMIRI,
+                fontFamily: "'Gulzar', serif",
                 fontSize: "clamp(0.72rem, 1.8vw, 0.85rem)",
                 color: g(0.7),
                 letterSpacing: "0.25em",

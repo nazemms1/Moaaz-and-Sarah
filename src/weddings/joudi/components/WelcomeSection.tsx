@@ -110,11 +110,12 @@ export function WelcomeSection() {
           backgroundImage: `url('${config.sectionImages.backgroundImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          opacity: 0.5,
         }}
       />
       <div
         className="absolute inset-0"
-        style={{ background: "rgba(255,253,248,0.45)" }}
+        style={{ background: "rgba(255,253,248,0.6)" }}
       />
 
       {/* Thin gold top border */}

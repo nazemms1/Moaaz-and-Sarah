@@ -188,6 +188,7 @@ export function CoupleSection() {
           backgroundImage: `url(${config.sectionImages.couple})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          opacity: 0.4,
         }}
       />
 
@@ -196,9 +197,9 @@ export function CoupleSection() {
         className="absolute inset-0"
         style={{
           background: `radial-gradient(ellipse 110% 90% at 50% 44%,
-          rgba(20,12,4,0.45) 0%,
-          rgba(15,9,2,0.55) 55%,
-          rgba(10,6,1,0.68) 100%)`,
+          rgba(20,12,4,0.7) 0%,
+          rgba(15,9,2,0.8) 55%,
+          rgba(10,6,1,0.9) 100%)`,
         }}
       />
 
@@ -301,11 +302,13 @@ export function CoupleSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.9 }}
           style={{
-            fontFamily: SCH,
-            fontSize: "clamp(1.1rem, 3.5vw, 1.5rem)",
+            fontFamily: "'Gulzar', serif",
+            fontSize: "clamp(2rem, 7vw, 3.2rem)",
+            fontWeight: 700,
             color: OW,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.02em",
             textAlign: "center",
+            textShadow: "0 2px 10px rgba(0,0,0,0.2)",
           }}
         >
           بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
@@ -314,7 +317,7 @@ export function CoupleSection() {
         {/* Separator after basmala */}
         <GoldDivider delay={0.3} />
 
-        {/* Bride — title + name */}
+        {/* Groom — title + name */}
         <motion.div
           className="flex flex-col items-center gap-1"
           initial={{ opacity: 0, y: 18 }}
@@ -324,51 +327,7 @@ export function CoupleSection() {
           <span
             style={{
               fontFamily: AMIRI,
-              fontSize: "clamp(0.85rem, 2.2vw, 1.1rem)",
-              color: w(0.6),
-              letterSpacing: "0.22em",
-              direction: "rtl",
-            }}
-          >
-            {t.partner2Title}
-          </span>
-          <h1
-            style={{
-              fontFamily: SCH,
-              fontSize: "clamp(3.2rem, 11vw, 6.5rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              color: OW,
-              textShadow: `0 0 60px ${w(0.35)}, 0 0 120px ${w(0.15)}, 0 3px 16px ${d(0.2)}`,
-              textAlign: "center",
-              margin: 0,
-            }}
-          >
-            {t.partner2}
-          </h1>
-        </motion.div>
-
-        {/* White heart */}
-        <motion.span
-          initial={{ opacity: 0, scale: 0.4 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.78, duration: 0.8, type: "spring", stiffness: 80 }}
-          style={{ fontSize: "clamp(1.6rem, 5vw, 2.4rem)", color: OW, lineHeight: 1 }}
-        >
-          ♡
-        </motion.span>
-
-        {/* Groom — title + name */}
-        <motion.div
-          className="flex flex-col items-center gap-1"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.95, duration: 1.1, type: "spring", stiffness: 65 }}
-        >
-          <span
-            style={{
-              fontFamily: AMIRI,
-              fontSize: "clamp(0.85rem, 2.2vw, 1.1rem)",
+              fontSize: "clamp(1.6rem, 4.5vw, 2.2rem)",
               color: w(0.6),
               letterSpacing: "0.22em",
               direction: "rtl",
@@ -392,6 +351,50 @@ export function CoupleSection() {
           </h1>
         </motion.div>
 
+        {/* White heart */}
+        <motion.span
+          initial={{ opacity: 0, scale: 0.4 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.78, duration: 0.8, type: "spring", stiffness: 80 }}
+          style={{ fontSize: "clamp(1.6rem, 5vw, 2.4rem)", color: OW, lineHeight: 1 }}
+        >
+          ♡
+        </motion.span>
+
+        {/* Bride — title + name */}
+        <motion.div
+          className="flex flex-col items-center gap-1"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.95, duration: 1.1, type: "spring", stiffness: 65 }}
+        >
+          <span
+            style={{
+              fontFamily: AMIRI,
+              fontSize: "clamp(1.6rem, 4.5vw, 2.2rem)",
+              color: w(0.6),
+              letterSpacing: "0.22em",
+              direction: "rtl",
+            }}
+          >
+            {t.partner2Title}
+          </span>
+          <h1
+            style={{
+              fontFamily: SCH,
+              fontSize: "clamp(3.2rem, 11vw, 6.5rem)",
+              fontWeight: 700,
+              lineHeight: 1.05,
+              color: OW,
+              textShadow: `0 0 60px ${w(0.35)}, 0 0 120px ${w(0.15)}, 0 3px 16px ${d(0.2)}`,
+              textAlign: "center",
+              margin: 0,
+            }}
+          >
+            {t.partner2}
+          </h1>
+        </motion.div>
+
         {/* English names */}
         <motion.p
           initial={{ opacity: 0 }}
@@ -406,7 +409,7 @@ export function CoupleSection() {
             direction: "ltr",
           }}
         >
-          Dr. Sarah &amp; Dr. Muhammad Moaaz
+          Dr. Muhammad Moaaz &amp; Dr. Sarah
         </motion.p>
 
         {/* Separator before date */}

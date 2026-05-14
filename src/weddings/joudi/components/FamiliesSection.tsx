@@ -301,13 +301,13 @@ export function FamiliesSection() {
           <FamilyCard
             tag="عائلة العريس"
             title="حَرَمُ الحَاجِّ صُبْحِي حَبَّاب"
-            subtitle="مُحَمَّد مُعَاذ حَبَّاب"
+            subtitle=""
             delay={0.5}
           />
           <FamilyCard
             tag="عائلة العروسة"
             title="حَرَمُ الدُّكتُور عِمَاد رَيحَاوِي"
-            subtitle="سَارَة رَيحَاوِي"
+            subtitle=""
             delay={0.72}
           />
         </div>

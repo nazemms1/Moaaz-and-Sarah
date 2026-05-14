@@ -365,43 +365,83 @@ export function VenueSection() {
 
             </motion.p>
 
-            {/* No children notice */}
-            <motion.div
-              className="flex items-center justify-center gap-3 w-full mb-6 px-4 py-3"
-              style={{
-                border: `1px solid ${g(0.25)}`,
-                background: g(0.05),
-              }}
-              initial={{ opacity: 0, y: 8 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 1.15, duration: 0.7 }}
-            >
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke={GOLD}
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-              </svg>
-              <p
+            {/* Notices */}
+            <div className="flex flex-col gap-3 w-full mb-6">
+              {/* Islamic Dress notice */}
+              <motion.div
+                className="flex items-center justify-center gap-3 w-full px-4 py-3"
                 style={{
-                  fontFamily: SCH,
-                  fontSize: "clamp(0.95rem, 2.3vw, 1.1rem)",
-                  color: `rgba(120,90,30,0.85)`,
-                  direction: "rtl",
-                  lineHeight: 1.7,
-                  textAlign: "center",
+                  border: `1px solid ${g(0.25)}`,
+                  background: g(0.05),
                 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 1.1, duration: 0.7 }}
               >
-                إدارة الصالة لا تَسمح بإدخال الأطفال
-              </p>
-            </motion.div>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={GOLD}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <p
+                  style={{
+                    fontFamily: SCH,
+                    fontSize: "clamp(0.85rem, 2.2vw, 1rem)",
+                    color: `rgba(120,90,30,0.85)`,
+                    direction: "rtl",
+                    lineHeight: 1.6,
+                    textAlign: "center",
+                  }}
+                >
+                  {t.islamicDress}
+                </p>
+              </motion.div>
+
+              {/* No children notice */}
+              <motion.div
+                className="flex items-center justify-center gap-3 w-full px-4 py-3"
+                style={{
+                  border: `1px solid ${g(0.25)}`,
+                  background: g(0.05),
+                }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 1.2, duration: 0.7 }}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={GOLD}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                </svg>
+                <p
+                  style={{
+                    fontFamily: SCH,
+                    fontSize: "clamp(0.85rem, 2.2vw, 1rem)",
+                    color: `rgba(120,90,30,0.85)`,
+                    direction: "rtl",
+                    lineHeight: 1.6,
+                    textAlign: "center",
+                  }}
+                >
+                  {t.noKids}
+                </p>
+              </motion.div>
+            </div>
 
             {/* Map button */}
             <motion.a
