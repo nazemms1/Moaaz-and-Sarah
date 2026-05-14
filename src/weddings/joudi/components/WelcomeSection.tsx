@@ -259,7 +259,7 @@ export function WelcomeSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.85, duration: 0.9 }}
         >
-          سعادتنا لا تكتمل إلا بوجودكم معنا
+  سعادتنا لا تكتمل إلا بوجودكم معنا
         </motion.p>
 
         {/* Bow icon */}
