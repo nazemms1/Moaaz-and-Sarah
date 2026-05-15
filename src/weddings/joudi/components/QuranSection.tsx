@@ -177,7 +177,7 @@ export function QuranSection() {
             <motion.p
               style={{
                 fontFamily: "'Amiri', 'Noto Naskh Arabic', serif",
-                fontSize: "clamp(1.4rem, 4vw, 2rem)",
+                fontSize: "clamp(1.2rem, 4vw, 2rem)",
                 fontWeight: 700,
                 color: GOLD,
                 textAlign: "center",

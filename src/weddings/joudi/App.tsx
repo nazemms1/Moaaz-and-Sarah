@@ -26,7 +26,7 @@ function App() {
         setIsAutoScrolling(true);
       }, 3000);
 
-return () => clearTimeout(startTimeout);
+      return () => clearTimeout(startTimeout);
     }
   }, [stage]);
 
@@ -87,11 +87,7 @@ return () => clearTimeout(startTimeout);
 
   return (
     <>
-      <audio
-        ref={audioRef}
-        loop
-        src={"/Moaaz-and-Sarah/Ludovico Einaudi - Experience.m4a"}
-      />
+      <audio ref={audioRef} loop src={"/Moaaz-and-Sarah/wedding-song.m4a"} />
       <AnimatePresence>
         {stage === "envelope" && (
           <EnvelopeIntro onOpen={() => setStage("main")} audioRef={audioRef} />

@@ -7,7 +7,12 @@
       "Bash(npm run *)",
       "Bash(ffmpeg -version)",
       "Bash(ffmpeg -i intro.mp4 -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p -movflags +faststart -an intro_fixed.mp4 -y)",
-      "Bash(ffprobe -v error -show_entries stream=codec_name,codec_long_name,width,height -of default=noprint_wrappers=1 \"d:\\\\wedding\\\\Moaaz-Habbab\\\\wedding\\\\public\\\\intro.mp4\")"
+      "Bash(ffprobe -v error -show_entries stream=codec_name,codec_long_name,width,height -of default=noprint_wrappers=1 \"d:\\\\wedding\\\\Moaaz-Habbab\\\\wedding\\\\public\\\\intro.mp4\")",
+      "PowerShell(yt-dlp -x --audio-format m4a --audio-quality 0 -o \"d:\\\\wedding\\\\Moaaz-Habbab\\\\wedding\\\\public\\\\wedding-song.%\\(ext\\)s\" \"https://www.youtube.com/watch?v=dbVR391HzT8\")",
+      "PowerShell(scoop update yt-dlp)",
+      "PowerShell(yt-dlp --version)",
+      "PowerShell($url = \"https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe\"; $dest = \"C:\\\\Users\\\\asus\\\\scoop\\\\shims\\\\yt-dlp-new.exe\"; Invoke-WebRequest -Uri $url -OutFile $dest; & $dest --version)",
+      "PowerShell(& \"C:\\\\Users\\\\asus\\\\scoop\\\\shims\\\\yt-dlp-new.exe\" -x --audio-format m4a --audio-quality 0 -o \"d:\\\\wedding\\\\Moaaz-Habbab\\\\wedding\\\\public\\\\wedding-song.%\\(ext\\)s\" \"https://www.youtube.com/watch?v=dbVR391HzT8\")"
     ]
   }
 }
