@@ -176,12 +176,12 @@ export function QuranSection() {
             {/* Ayah */}
             <motion.p
               style={{
-                fontFamily: "'Gulzar', serif",
-                fontSize: "clamp(2.5rem, 8vw, 4.2rem)",
-                fontWeight: 400,
+                fontFamily: "'Amiri', 'Noto Naskh Arabic', serif",
+                fontSize: "clamp(1.4rem, 4vw, 2rem)",
+                fontWeight: 700,
                 color: GOLD,
                 textAlign: "center",
-                lineHeight: 1.4,
+                lineHeight: 1.9,
                 direction: "rtl",
                 textShadow: `0 0 50px ${g(0.15)}, 0 1px 1px rgba(0,0,0,0.05)`,
               }}
