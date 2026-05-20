@@ -8,7 +8,7 @@ import { FamiliesSection } from "./components/FamiliesSection";
 import { DateSection } from "./components/DateSection";
 import { PresenceSection } from "./components/PresenceSection";
 import { VenueSection } from "./components/VenueSection";
-import { RsvpSection } from "./components/RsvpSection";
+// import { RsvpSection } from "./components/RsvpSection";
 import { EngagementTimeline } from "./components/EngagementTimeline";
 // import { BackToTop } from "../../shared/BackToTop";
 import { SectionDivider } from "../../shared/SectionDivider";
@@ -118,8 +118,8 @@ function App() {
             <SectionDivider />
 
             <VenueSection />
-            <SectionDivider />
-            <RsvpSection />
+            {/* <SectionDivider /> */}
+            {/* <RsvpSection /> */}
 
             {/* Resume Scroll Button - only shows if user interrupted and isn't at bottom */}
             {!isAutoScrolling && window.scrollY > 100 && (
